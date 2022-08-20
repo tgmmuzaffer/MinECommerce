@@ -6,4 +6,26 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Extensions\ServiceExtension.cs" />
+    <Compile Remove="IServices\ICreateDefaultUser.cs" />
+    <Compile Remove="Services\CreateDefaultUser.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="IServices\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MinECommerce.Context\MinECommerce.Context\MinECommerce.Context.csproj" />
+  </ItemGroup>
+
 </Project>
