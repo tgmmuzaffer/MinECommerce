@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MinECommerce.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,10 @@ namespace MinECommerce.Context
         {
 
         }
+
+        public DbSet<FeatureDescription> FeatureDescriptions { get; set; }
+        public DbSet<Feature>  Features { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

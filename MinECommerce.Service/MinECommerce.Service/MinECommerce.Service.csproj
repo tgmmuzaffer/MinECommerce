@@ -15,8 +15,6 @@
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Extensions\" />
-    <Folder Include="IServices\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

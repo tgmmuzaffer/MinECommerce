@@ -8,5 +8,11 @@ namespace MinECommerce.Entity
 {
     public class Discount
     {
+        public int Id { get; set; }
+        public int Rate { get; set; }
+        public List<Feature>? Features
+        {
+            get; set;
+        }
     }
 }

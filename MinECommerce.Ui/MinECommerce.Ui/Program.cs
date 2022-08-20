@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MinECommerce.Context;
 using MinECommerce.Entity;
+using MinECommerce.Service.IServices;
+using MinECommerce.Service.Services;
 using MinECommerce.Ui.Areas.Identity.Data;
 using MinECommerce.Ui.Data;
 using MinECommerce.Ui.IServices;
@@ -31,6 +33,10 @@ builder.Services.AddControllersWithViews();
 
 #region Services
 builder.Services.AddScoped<ICreateDefaultUser, CreateDefaultUser>();
+builder.Services.AddScoped<IFeatureDescriptionService, FeatureDescriptionService>();
+builder.Services.AddScoped<IFeatureService, FeatureService>();
+builder.Services.AddScoped<IDiscountService, DiscountService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 #endregion
 
