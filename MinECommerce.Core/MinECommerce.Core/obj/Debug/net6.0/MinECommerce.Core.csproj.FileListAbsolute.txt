@@ -1,0 +1,12 @@
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\bin\Debug\net6.0\MinECommerce.Core.deps.json
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\bin\Debug\net6.0\MinECommerce.Core.dll
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\bin\Debug\net6.0\MinECommerce.Core.pdb
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\MinECommerce.Core.csproj.AssemblyReference.cache
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\MinECommerce.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\MinECommerce.Core.AssemblyInfoInputs.cache
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\MinECommerce.Core.AssemblyInfo.cs
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\MinECommerce.Core.csproj.CoreCompileInputs.cache
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\MinECommerce.Core.dll
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\refint\MinECommerce.Core.dll
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\MinECommerce.Core.pdb
+C:\Users\MONSTER\source\repos\MinECommerce\MinECommerce.Core\MinECommerce.Core\obj\Debug\net6.0\ref\MinECommerce.Core.dll
