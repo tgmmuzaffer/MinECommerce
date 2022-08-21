@@ -1,0 +1,57 @@
+﻿@using MinECommerce.Service.Dtos
+@model FeatureDto
+@{
+    ViewData["Title"] = "Add Feature ";
+    var discountList = ViewBag.discountlist as List<MinECommerce.Entity.Discount>;
+    var featDescList = ViewBag.featDescList;
+    //featDescList = featDescList as List<MinECommerce.Entity.FeatureDescription>;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<form class="row g-3" asp-controller="Product" asp-action="CreateFeature" method="post" enctype="multipart/form-data">
+    <div class="col-md-6">
+        <label class="form-label" asp-for="Name"></label>
+        <input class="form-control" asp-for="Name">
+    </div>
+    @if (featDescList != null && featDescList.Count > 0)
+    {
+        <div class="col-md-6">
+            <select class="selectpicker" asp-for="FeatureDescriptionIds" data-none-selected-text="Make at least one choice ">
+                @foreach (var item in featDescList)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+    }
+    @if (discountList != null && discountList.Count > 0)
+    {
+        <div class="col-md-6">
+            <label class="form-label" asp-for="DiscountId"></label>
+            <select class="form-control" asp-for="DiscountId">
+                <option selected disabled value="default">Make a choice</option>
+                @foreach (var item in discountList)
+                {
+                    <option value="@item.Id">@item.Rate</option>
+                }
+            </select>
+        </div>
+    }
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>
+<script src="~/lib/jquery/dist/jquery.min.js" ></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+
+
+
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha512-LCNYs7jH7Odmoc6adflrhgpq0cJmq8fwQJq3ICCBuk8BKFwA0PL6pVgVcKFnfNc0dJ+UmFp5sYvjG+jjlh7nXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>*@

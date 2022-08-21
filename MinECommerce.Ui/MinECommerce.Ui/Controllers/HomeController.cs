@@ -1,21 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MinECommerce.Service.IServices;
 using MinECommerce.Ui.Models;
 using System.Diagnostics;
 
 namespace MinECommerce.Ui.Controllers
 {
+    //[Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IProductService _productService;
+        public HomeController(ILogger<HomeController> logger, IProductService productService)
         {
             _logger = logger;
+            _productService = productService;
         }
+        //[Authorize(Roles = "Admin, Editor")]
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var result = await _productService.GetProducts();
+            return View(result);
         }
 
         public IActionResult Privacy()

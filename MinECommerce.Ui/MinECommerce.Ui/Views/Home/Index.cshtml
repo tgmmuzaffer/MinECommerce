@@ -6,10 +6,17 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p>
-        Dummy kullanıcıları tanımlarken ;
 
-        Normalde data katmanındaki entityde herhangi bir pacaket vs olmaması lazım. ama benden istenen çok katmanluı mimariye göre identity dsınıfından gelen entity ve db contexti benim bu data katmanına taşımam gerek. Ama bu şekilde yaınca migrationda hata aldım design time da oluşturulamıyor diye. Bu yüzden yapıya aykırı durumu tercih ettim. Ui katmanında user işlemleri mevcut. Eğer bu durum olmasaydı.Dummy data oluştururken kullandığım tek tek nesne oluşturma ve hash lenmiş haldeki şifre gibi durumu manuel vermeyecek oluşturduğum servids üzerinden daha identity yapısına uygun bir du7mmy datya girişi olucaktı. Önerilere ve tartışmaya açığım.
+        Proje Özeti ve Öz Eleştiri:
+        Feature'lara göre indirim uygulanabilecek entity yapısı kuruldu.
+        Login LogOut Register ı kapsayan Identity user yapısı kuruldu.
+        Default kullanıcı ve roller uygulama koşmaya başladığında otomatik migrate eder.
+        Urun ve bağlı diğer tablolar ilişkilendirildi.
 
+        Projede identityUser ve entity'lerin farklı Context sınıfından kalıtım alması sebebiyle çift DbContext sınıfı var. Identity'ye ait olan Context ve entity sınıfılarını data katmanına almaya çalıştım fakat hata aldım. .Net3.1 de birden fazla context ile aynı şekilde migration yapmıştım. Bu yüzden Ui katmannda IdentityUser'a ait sınıflar mevcut.
+        IdentityUser a rol yapısını ve yetkilendirme konusunda zaman kaybettim. 
+        Ürün işlemlerine geçtiğimde bir feature'ın birden fazla FeatureDescription'ı olcağından multiple select yapmam gerekti. Fakat bootstrap 5.1.0 da kullandığım gerekli select picker dosylarının version uyumsuzluğundan problem yaşadım.
+        Bu commit'i attığım durumu 24 verilen sürenin dolduğu halidir.
     </p>
 
 </div>

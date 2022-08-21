@@ -10,7 +10,7 @@ namespace MinECommerce.Entity
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public int? DiscountId { get; set; }
+        public int DiscountId { get; set; }
         public Discount? Discount { get; set; }
         public List<FeatureDescription> FeatureDescriptions { get; set; } = new List<FeatureDescription>();
         public List<Product> Products { get; set; } = new List<Product>();

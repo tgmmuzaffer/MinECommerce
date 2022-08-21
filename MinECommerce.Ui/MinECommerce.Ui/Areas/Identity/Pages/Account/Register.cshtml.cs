@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using MinECommerce.Entity;
 using MinECommerce.Ui.Areas.Identity.Data;
+using MinECommerce.Ui.IServices;
 
 namespace MinECommerce.Ui.Areas.Identity.Pages.Account
 {
@@ -27,6 +28,7 @@ namespace MinECommerce.Ui.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<MinECommerceUiUser> _signInManager;
         private readonly UserManager<MinECommerceUiUser> _userManager;
+        private readonly IRoleService _roleManager;
         private readonly IUserStore<MinECommerceUiUser> _userStore;
         private readonly IUserEmailStore<MinECommerceUiUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -37,7 +39,8 @@ namespace MinECommerce.Ui.Areas.Identity.Pages.Account
             IUserStore<MinECommerceUiUser> userStore,
             SignInManager<MinECommerceUiUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IRoleService roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -45,6 +48,7 @@ namespace MinECommerce.Ui.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -99,11 +103,13 @@ namespace MinECommerce.Ui.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            public string Name { get; set; }
         }
 
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            ViewData["roles"] = _roleManager.GetRoles();
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -111,6 +117,7 @@ namespace MinECommerce.Ui.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
+            var role = _roleManager.FindByName(Input.Name);
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
@@ -123,8 +130,9 @@ namespace MinECommerce.Ui.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-
+                   
                     var userId = await _userManager.GetUserIdAsync(user);
+                    _roleManager.AddToRole(userId, role.Id);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
@@ -152,7 +160,7 @@ namespace MinECommerce.Ui.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
+            ViewData["roles"] = _roleManager.GetRoles();
             return Page();
         }
 

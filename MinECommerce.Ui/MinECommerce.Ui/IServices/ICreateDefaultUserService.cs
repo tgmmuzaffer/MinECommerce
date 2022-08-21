@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MinECommerce.Ui.IServices
 {
-    public interface ICreateDefaultUser
+    public interface ICreateDefaultUserService
     {
         void CreateDefUser();
     }

@@ -1,0 +1,17 @@
+﻿@using MinECommerce.Entity
+@model MinECommerce.Entity.FeatureDescription
+@{
+    ViewData["Title"] = "Add Feature Description";
+    var featureDescription = ViewBag.featureDescription as List<FeatureDescription>;
+}
+
+<form class="row g-3" asp-controller="Product" asp-action="CreateFeatureDescription" method="post" enctype="multipart/form-data" asp-antiforgery="true">
+    <div class="col-md-6">
+        <label class="form-label" asp-for="Description"></label>
+        <input class="form-control" asp-for="Description">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>
+

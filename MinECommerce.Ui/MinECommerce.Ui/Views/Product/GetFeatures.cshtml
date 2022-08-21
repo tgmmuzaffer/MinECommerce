@@ -1,0 +1,52 @@
+﻿@model List<MinECommerce.Entity.Feature>
+@{
+    ViewData["Title"] = "Features";
+    int i = 1;
+}
+
+
+
+<div class="container d-flex">
+    <div class="col-2">
+        <div class="list-group">
+
+            <a asp-controller="Product" asp-action="GetFeatureDescriptions" type="button" class="list-group-item list-group-item-action ">Feature Description</a>
+            <a asp-controller="Product" asp-action="GetFeatures" type="button" class="list-group-item list-group-item-action active">Feature</a>
+            <a asp-controller="Product" asp-action="GetDiscount" type="button" class="list-group-item list-group-item-action">Discount</a>
+            <a asp-controller="Product" asp-action="GetProducts" type="button" class="list-group-item list-group-item-action" disabled>Product</a>
+        </div>
+        <a asp-controller="Product" asp-action="AddFeature" type="button" class="btn btn-success">Add New</a>
+
+    </div>
+    <div class="col-10">
+        <table id="datatablesSimple" class="display">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Rate</th>
+                    <th>#</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+
+                        <td>@i</td>
+                        <td>@item.Name</td>
+                        @if(item.Discount!=null){
+                            <td>@item.Discount.Rate</td>
+                        }
+                        <td>Delete</td>
+                        <td>Update</td>
+                    </tr>
+
+                    i++;
+                }
+            <tbody>
+        </table>
+    </div>
+</div>

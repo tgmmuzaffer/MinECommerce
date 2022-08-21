@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using MinECommerce.Context;
 using MinECommerce.Entity;
 using MinECommerce.Service.IServices;
@@ -28,11 +29,21 @@ builder.Services.AddDbContext<UserContext>(options =>
 #endregion
 
 builder.Services.AddDefaultIdentity<MinECommerceUiUser>(options => options.SignIn.RequireConfirmedAccount = false)
+//builder.Services.AddIdentity<MinECommerceUiUser, MinECommerceUiUserRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<UserContext>(); 
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddRazorPages();
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("readpolicy",
+        builder => builder.RequireRole("SysAdmin", "Admin", "Customer"));
+    options.AddPolicy("halfwritepolicy",
+        builder => builder.RequireRole("SysAdmin", "Admin"));
+    options.AddPolicy("writepolicy",
+        builder => builder.RequireRole("SysAdmin"));
+});
 #region Services
-builder.Services.AddScoped<ICreateDefaultUser, CreateDefaultUser>();
+builder.Services.AddScoped<ICreateDefaultUserService, CreateDefaultUserService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IFeatureDescriptionService, FeatureDescriptionService>();
 builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IDiscountService, DiscountService>();
@@ -47,8 +58,10 @@ using (var scope = app.Services.CreateScope())
     dataContext.Database.Migrate();
 
     var serviceprovider = scope.ServiceProvider;
-    var userService = serviceprovider.GetRequiredService<ICreateDefaultUser>();
+    var userService = serviceprovider.GetRequiredService<ICreateDefaultUserService>();
     userService.CreateDefUser();
+    var roleService=serviceprovider.GetRequiredService<IRoleService>();
+    roleService.Create();
 }
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

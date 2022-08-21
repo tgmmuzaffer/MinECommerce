@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FIGxJAUfSIDm2u+wcAEBsMS2N8vT2V0g6jzKZi62fU0=",
+  "Hash": "QR3qstGcdXKFi3jN0TsyUcd39L2o27ekO/rZpe6quaI=",
   "Source": "MinECommerce.Ui",
   "BasePath": "_content/MinECommerce.Ui",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\MONSTER\\Desktop\\MinECommerce\\MinECommerce.Ui\\MinECommerce.Ui\\wwwroot\\js\\datatables.js",
+      "SourceId": "MinECommerce.Ui",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MONSTER\\Desktop\\MinECommerce\\MinECommerce.Ui\\MinECommerce.Ui\\wwwroot\\",
+      "BasePath": "_content/MinECommerce.Ui",
+      "RelativePath": "js/datatables.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\datatables.js"
     },
     {
       "Identity": "C:\\Users\\MONSTER\\Desktop\\MinECommerce\\MinECommerce.Ui\\MinECommerce.Ui\\wwwroot\\js\\site.js",
